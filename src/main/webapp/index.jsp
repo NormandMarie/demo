@@ -10,7 +10,7 @@
 </h1>
 <br/>
 <a href="contact">contact</a>
-<a href="dashboard"> dashboard</a>
+<a href="secured/dashboard"> dashboard</a>
 <a href="secured/posts"> posts</a>
 </body>
 </html>

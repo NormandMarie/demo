@@ -10,13 +10,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/dashboard")
+@WebServlet(urlPatterns = "/secured/dashboard")
 public class DashboardServlet extends HttpServlet {
 
 
     @Override
     protected void  doGet(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("HTTP GET => /dashboard");
         String   name = req.getParameter("name");
         String nom =req.getParameter("nom");
         req.setAttribute("name",name);

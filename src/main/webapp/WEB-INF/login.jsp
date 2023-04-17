@@ -17,7 +17,7 @@
     <input type="password" name="password">
     <button type="submit">Login</button>
 </form>
-
+<a href="register">register</a>
 <c:if test="${isError == true}">
     <p>Bad credentials.</p>
 </c:if>

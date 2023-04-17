@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.example.demo.model.Post" %>
-<%@ page import="static com.example.demo.service.PostService.posts" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -23,7 +22,10 @@
     <p>Aucun post trouvé.</p>
 </c:if>
 <h1 class ="container" style="text-align: center;"> voici l'index de tout mes Posts nouvelle version</h1>
-<div class="d-flex container ">
+<div class=" container " style="display: grid;grid-template-columns: repeat(3, 1fr);
+grid-column-gap: 20px;
+grid-row-gap: 20px; ">
+    <jsp:useBean id="posts" scope="request" type="java.util.List"/>
     <c:forEach items="${posts}" var="post">
         <div>
             <div class="card m-4" style="width: 18rem;">
@@ -38,10 +40,13 @@
         </div>
     </c:forEach>
 </div>
+
+<%--
 <h1 class ="container" style="text-align: center;"> voici l'index de tout mes Posts à l'ancienne</h1>
 <div class="d-flex container ">
 
-<%
+
+    Post[] posts = new Post[0];
     for (Post p : posts) {
 %>
     <div>
@@ -55,8 +60,8 @@
             </div>
         </div>
     </div>
-<% }%>
-    <a href="${pageContext.request.contextPath}/dashboard">dasbord</a>
+<% }--%>
+    <a href="${pageContext.request.contextPath}/secured/dashboard">dasbord</a>
     <a href="${pageContext.request.contextPath}/secured/logout">Close Session</a>
 </div>
 </body>

@@ -10,7 +10,7 @@ public class Post {
 
     private String createAt;
 
-    public Post(long id, String title, String author, String content) {
+    public Post(String title, String author, String content) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -47,5 +47,13 @@ public class Post {
 
     public String getCreateAt() {
         return createAt;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
