@@ -1,6 +1,6 @@
-package com.example.demo.servlet;
-import com.example.demo.dao.postDao;
-import com.example.demo.dao.userDao;
+package com.example.servlet;
+import com.example.dao.postDao;
+import com.example.dao.userDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

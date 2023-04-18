@@ -1,9 +1,9 @@
-package com.example.demo.model;
+package com.example.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Post {
-    private long id;
+    private int id;
     private String title;
     private String author;
     private String content;
@@ -20,6 +20,17 @@ public class Post {
         String formattedDateTime = now.format(formatter);
         this.createAt = formattedDateTime;
     }
+    public Post(int id,String title, String author, String content) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        String formattedDateTime = now.format(formatter);
+        this.createAt = formattedDateTime;
+    }
+
 
     public String getTitle() {
         return title;
@@ -53,7 +64,7 @@ public class Post {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

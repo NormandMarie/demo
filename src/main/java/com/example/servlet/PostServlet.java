@@ -1,8 +1,7 @@
-package com.example.demo.servlet;
+package com.example.servlet;
 
-import com.example.demo.dao.postDao;
-import com.example.demo.model.Post;
-import com.example.demo.service.PostService;
+import com.example.dao.postDao;
+import com.example.model.Post;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.servlet.register.*;
+import static com.example.servlet.register.*;
 
 @WebServlet(urlPatterns = "/secured/posts")
 public class PostServlet extends HttpServlet {
@@ -48,7 +47,7 @@ public class PostServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }*/
-       // initialiser l'instance de postDao dans la méthode init()
+        // initialiser l'instance de postDao dans la méthode init()
         postDao = new postDao();
         List<Post> posts = postDao.index();
         req.setAttribute("posts", posts);

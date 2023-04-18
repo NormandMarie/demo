@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.example.demo.model.Post" %>
+<%@ page import="com.example.model.Post" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -33,7 +33,9 @@ grid-row-gap: 20px; ">
                     <h5 class="card-title">${post.title}</h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary">${post.author}</h6>
                     <p class="card-text">${post.content}</p>
-                    <p>${post.createAt}</p>
+                    <p>${post.createAt} </p>
+                    <p>${post.id}</p>
+                    <a href="delete?id=${post.id}">delete</a>
                     <a href="#" class="card-link">détail</a>
                 </div>
             </div>

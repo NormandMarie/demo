@@ -1,8 +1,8 @@
-package com.example.demo.servlet;
+package com.example.servlet;
 
-import com.example.demo.dao.postDao;
-import com.example.demo.dao.userDao;
-import com.example.demo.model.User;
+import com.example.dao.postDao;
+import com.example.dao.userDao;
+import com.example.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,11 +13,11 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 
-import static com.example.demo.servlet.register.*;
+import static com.example.servlet.register.*;
 
 @WebServlet(urlPatterns = "/login")
 public class login extends HttpServlet {
-   public userDao userDao;
+    public userDao userDao;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
@@ -77,5 +77,5 @@ public class login extends HttpServlet {
             e.printStackTrace();
         }
         }*/
- }
+}
 

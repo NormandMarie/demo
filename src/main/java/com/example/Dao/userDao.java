@@ -1,13 +1,13 @@
-package com.example.demo.dao;
+package com.example.dao;
 
-import com.example.demo.model.Post;
-import com.example.demo.model.User;
+import com.example.model.Post;
+import com.example.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.servlet.register.*;
+import static com.example.servlet.register.*;
 
 public class userDao {
     public User verif(String username, String password) throws SQLException {
@@ -41,24 +41,24 @@ public class userDao {
     }
 
     public User creat(String username, String password) {
-            final String INSERT_SQL = "INSERT INTO user (username, password) VALUES (?, ?)";
-            User user = null;
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        final String INSERT_SQL = "INSERT INTO user (username, password) VALUES (?, ?)";
+        User user = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 
-                PreparedStatement statement = connection.prepareStatement(INSERT_SQL);
-                statement.setString(1, username);
-                statement.setString(2, password);
-                int rowsInserted = statement.executeUpdate();
-                if (rowsInserted > 0) {
-                    user = new User(username, password);
-                }
-                connection.close();
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
+            PreparedStatement statement = connection.prepareStatement(INSERT_SQL);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                user = new User(username, password);
             }
-            return user;
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
-
+        return user;
     }
+
+}
