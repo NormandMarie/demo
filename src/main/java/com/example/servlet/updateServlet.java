@@ -23,7 +23,7 @@ public class updateServlet extends HttpServlet {
         req.setAttribute("post", post);
         RequestDispatcher viewpost = req.getRequestDispatcher("/WEB-INF/update.jsp");
         viewpost.forward(req, resp);
-        //resp.sendRedirect(req.getContextPath() + "/secured/posts");
+
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
