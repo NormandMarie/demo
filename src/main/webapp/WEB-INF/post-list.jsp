@@ -36,11 +36,20 @@ grid-row-gap: 20px; ">
                     <p>${post.createAt} </p>
                     <p>${post.id}</p>
                     <a href="delete?id=${post.id}">delete</a>
+                    <a href="update?id=${post.id}">update</a>
                     <a href="#" class="card-link">détail</a>
                 </div>
             </div>
         </div>
     </c:forEach>
+    <form action="${pageContext.request.contextPath}/secured/update" method="post">
+        <input type="number" name="id" placeholder="id du post">
+        <input type="text" name="title"  placeholder="nouveau titre">
+        <input type="text" name="author"  placeholder="auteur">
+        <input type="text" name="content" placeholder="contenu">
+        <button type="submit">update</button>
+    </form>
+
 </div>
 
 <%--

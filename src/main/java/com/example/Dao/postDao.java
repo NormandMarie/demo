@@ -73,4 +73,46 @@ public class postDao {
             e.printStackTrace();
         }
     }
+    public Post findById(int id) {
+        final String sql = "SELECT * FROM post WHERE id = ?";
+
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                int idr = result.getInt("id");
+                String title = result.getString("title");
+                String author = result.getString("author");
+                String content = result.getString("content");
+
+
+                return new Post(idr, title,author, content);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    public void updatePost(int id, String title, String author, String content) {
+        try { Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection =  DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            PreparedStatement statement = connection.prepareStatement("UPDATE post SET title=?, author=?, content=? WHERE id=?");
+            statement.setString(1, title);
+            statement.setString(2, author);
+            statement.setString(3, content);
+            statement.setInt(4, id);
+            System.out.println(statement);
+            statement.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
