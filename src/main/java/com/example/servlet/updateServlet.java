@@ -1,5 +1,6 @@
 package com.example.servlet;
 
+import com.example.dao.PostDao;
 import com.example.model.Post;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,22 +10,29 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 
 @WebServlet(urlPatterns = "/secured/update")
 public class updateServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-       com.example.dao.postDao postDao = new com.example.dao.postDao();
+       PostDao postDao = new PostDao();
         String sid = req.getParameter("id");
         int id = Integer.parseInt(sid);
-        Post post = postDao.findById(id);
+        Post post;
+        try {
+            post = postDao.findById(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         req.setAttribute("post", post);
         RequestDispatcher viewpost = req.getRequestDispatcher("/WEB-INF/update.jsp");
         viewpost.forward(req, resp);
 
     }
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String sid = request.getParameter("id");
@@ -32,8 +40,12 @@ public class updateServlet extends HttpServlet {
         String title = request.getParameter("title");
         String author = request.getParameter("author");
         String content = request.getParameter("content");
-        com.example.dao.postDao postDao = new com.example.dao.postDao();
-        postDao.updatePost(id,title,author,content);
-        response.sendRedirect(request.getContextPath() + "/secured/posts");
+        String categoryName = request.getParameter("categoryName");
+        PostDao postDao = new PostDao();
+        postDao.updatePost(id,title,author,content,categoryName);
+        System.out.println(categoryName);
+        System.out.println(content);
+        System.out.println(postDao);
+
     }
 }

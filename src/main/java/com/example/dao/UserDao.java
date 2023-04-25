@@ -1,21 +1,17 @@
 package com.example.dao;
 
-import com.example.model.Post;
 import com.example.model.User;
+import com.example.service.DDBconnect;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
-import static com.example.servlet.register.*;
 
-public class userDao {
+public class UserDao {
     public User verif(String username, String password) throws SQLException {
         String requeteSQl = "SELECT * FROM user WHERE username = ? AND password = ?";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            Connection connection = DDBconnect.getConnection();
             PreparedStatement statement = connection.prepareStatement(requeteSQl);
             {
 
@@ -33,8 +29,6 @@ public class userDao {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
 
 
@@ -44,8 +38,7 @@ public class userDao {
         final String INSERT_SQL = "INSERT INTO user (username, password) VALUES (?, ?)";
         User user = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            Connection connection = DDBconnect.getConnection();
 
             PreparedStatement statement = connection.prepareStatement(INSERT_SQL);
             statement.setString(1, username);
@@ -55,7 +48,7 @@ public class userDao {
                 user = new User(username, password);
             }
             connection.close();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;

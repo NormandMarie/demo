@@ -1,7 +1,6 @@
 package com.example.servlet;
 
-import com.example.dao.postDao;
-import com.example.dao.userDao;
+import com.example.dao.UserDao;
 import com.example.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,11 +12,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 
-import static com.example.servlet.register.*;
-
 @WebServlet(urlPatterns = "/login")
 public class login extends HttpServlet {
-    public userDao userDao;
+    public UserDao userDao = new UserDao();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
@@ -25,7 +22,6 @@ public class login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        userDao = new userDao();
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 

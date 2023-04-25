@@ -14,13 +14,13 @@
 
 
 <h1> Bonjour ${name} ${nom} </h1>
-<p> ${MA_Cle}</p>
 <a href="posts"> posts</a>
 <a href="${pageContext.request.contextPath}/"> index</a>
 <form action="${pageContext.request.contextPath}/secured/posts" method="post">
-    <input type="text" name="title">
-    <input type="text" name="author">
-    <input type="text" name="content">
+    <input type="text" name="title" placeholder="titre">
+    <input type="text" name="author" placeholder="auteur">
+    <input type="text" name="content" placeholder="contenu">
+    <input type="text" name="category" placeholder="catégories">
     <button type="submit">new post</button>
 </form>
 </body>

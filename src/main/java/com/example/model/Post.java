@@ -10,6 +10,8 @@ public class Post {
 
     private String createAt;
 
+    private Category category;
+
     public Post(String title, String author, String content) {
         this.id = id;
         this.title = title;
@@ -30,6 +32,26 @@ public class Post {
         String formattedDateTime = now.format(formatter);
         this.createAt = formattedDateTime;
     }
+
+    public Post() {
+
+    }
+
+    public Post(String title, String author, String content, Category category) {
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        this.category = category;
+    }
+
+    public Post(int id, String title, String author, String content, Category category) {
+        this.id =id;
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        this.category = category;
+    }
+
 
 
 
@@ -61,11 +83,19 @@ public class Post {
         return createAt;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

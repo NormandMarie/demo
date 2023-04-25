@@ -31,9 +31,11 @@ grid-row-gap: 20px; ">
             <div class="card m-4" style="width: 18rem;">
                 <div class="card-body bg-dark-subtle">
                     <h5 class="card-title">${post.title}</h5>
+                    <p> ${post.title}</p>
                     <h6 class="card-subtitle mb-2 text-body-secondary">${post.author}</h6>
                     <p class="card-text">${post.content}</p>
                     <p>${post.createAt} </p>
+                  <p>Catégorie: ${post.category.name}</p>
                     <p>${post.id}</p>
                     <a href="delete?id=${post.id}">delete</a>
                     <a href="update?id=${post.id}">update</a>
@@ -42,14 +44,14 @@ grid-row-gap: 20px; ">
             </div>
         </div>
     </c:forEach>
-    <form action="${pageContext.request.contextPath}/secured/update" method="post">
-        <input type="number" name="id" placeholder="id du post">
-        <input type="text" name="title"  placeholder="nouveau titre">
-        <input type="text" name="author"  placeholder="auteur">
-        <input type="text" name="content" placeholder="contenu">
-        <button type="submit">update</button>
-    </form>
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+<c:forEach items="${categories}" var="category">
+            <li class="list-group-item">${category.name} <a href="deletec?id=${category.id}">delete</a><a href ="category?id=${category.id}">List Posts</a>  <a href="updateC?id=${category.id}">update</a></li>
 
+</c:forEach>
+    </ul>
+</div>
 </div>
 
 <%--

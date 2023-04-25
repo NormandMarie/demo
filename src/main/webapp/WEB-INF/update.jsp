@@ -23,6 +23,9 @@
     <input type="text" name="author" value="${post.author}" /><br>
     <label>Content:</label>
     <textarea name="content">${post.content}</textarea><br>
+    <p >${post.category.id}</p> >
+    <label>Catégories:</label>
+    <textarea name="name">${post.category.name}</textarea><br>
     <button type="submit">modifier</button>
 </form>
 </body>

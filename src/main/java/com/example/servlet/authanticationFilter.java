@@ -23,7 +23,7 @@ public class authanticationFilter extends HttpFilter {
 
         HttpSession session = request.getSession();
         if (session.getAttribute("username") != null) {
-            // Continue la chaine des filtres/navigations
+
             chain.doFilter(req, resp);
         } else {
             response.sendRedirect(request.getContextPath() + "/login");
